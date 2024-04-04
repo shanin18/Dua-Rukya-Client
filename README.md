@@ -23,10 +23,10 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📸 Dua Ruqyah <a name="about-project"></a>
+# 🤲 Dua Ruqyah <a name="about-project"></a>
 
 
-Captured Visions is a MERN-based photography school website with Firebase authentication. It features a Course Marketplace for browsing detailed courses and an Instructor Portal for managing classes.The integration of secure payment gateways ensures smooth transactions, while the Material-UI interface guarantees an intuitive user experience across all devices.
+Welcome to our webpage dedicated to dua and ruqyah, curated by the IRD Foundation. Explore a treasure trove of Islamic supplications and healing practices, meticulously organized to cater to various needs. Whether seeking divine guidance, protection, or remedy from ailments, our webpage offers a comprehensive resource for spiritual growth and well-being. Join us on this journey of faith and empowerment as we harness the transformative power of dua and ruqyah.
 
 
 
@@ -61,20 +61,20 @@ Captured Visions is a MERN-based photography school website with Firebase authen
 ### Key Features <a name="key-features"></a>
 
 
-- **Dark Mode**
-- **Sign up and log in pages**
-- **Course Marketplace**
-- **Instructor Portal**
-- **Student Dashboard**
-- **Instructor Dashboard**
-- **Admin Panel**
-- **User-friendly Interface**
+- **User-Friendly Interface**
+- **Search Functionality**
+- **Comprehensive Dua Collection**
+- **Educational Resources**
+- **Mobile Compatibility**
+- **Audio**
+- **Transliteration**
+- **Translation**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🚀 Live Demo <a name="live-demo"></a>
-- <a href="https://capturedvisions-61b6b.web.app/">Live Demo</a>
+- <a href="https://dua-ruqaiya.vercel.app">Live Demo</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -171,9 +171,9 @@ I would like to thank IRD Foundation for this amazing Job Task.
 
 > Add at least 2 questions new developers would ask when they decide to use your project.
 
-- **How can I customize the course listings in the Course Marketplace to suit my photography school's specific offerings and branding?**
+- **What languages are available for translation on the webpage?**
 
-  - To customize course listings, you can easily integrate your photography school's branding elements such as logos, colors, and fonts into the UI. Additionally, the platform allows you to add, edit, or remove courses through an intuitive admin interface, ensuring flexibility in tailoring the listings to match your school's curriculum and requirements.
+  - The webpage offers translations of dua and ruqyah texts in multiple languages to cater to diverse audiences and facilitate broader accessibility and understanding.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
