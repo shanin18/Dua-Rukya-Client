@@ -28,7 +28,8 @@
 
 Welcome to our webpage dedicated to dua and ruqyah, curated by the IRD Foundation. Explore a treasure trove of Islamic supplications and healing practices, meticulously organized to cater to various needs. Whether seeking divine guidance, protection, or remedy from ailments, our webpage offers a comprehensive resource for spiritual growth and well-being. Join us on this journey of faith and empowerment as we harness the transformative power of dua and ruqyah.
 
-<img src="https://i.ibb.co/KVfKJ76/thumbnail.png" alt="thumbnail" border="0">
+<div style={text-align:center}><img src="https://i.ibb.co/KVfKJ76/thumbnail.png" alt="thumbnail" border="0"></div>
+
 
 ## 🛠 Built With <a name="built-with"></a>
 
