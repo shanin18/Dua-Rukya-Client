@@ -171,9 +171,9 @@ I would like to thank IRD Foundation for this amazing Job Task.
 
 > Add at least 2 questions new developers would ask when they decide to use your project.
 
-- **How can I customize the course listings in the Course Marketplace to suit my photography school's specific offerings and branding?**
+- **What languages are available for translation on the webpage?**
 
-  - To customize course listings, you can easily integrate your photography school's branding elements such as logos, colors, and fonts into the UI. Additionally, the platform allows you to add, edit, or remove courses through an intuitive admin interface, ensuring flexibility in tailoring the listings to match your school's curriculum and requirements.
+  - The webpage offers translations of dua and ruqyah texts in multiple languages to cater to diverse audiences and facilitate broader accessibility and understanding.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
