@@ -1,6 +1,6 @@
 const getCategories = async () => {
   try {
-    const result = await fetch("http://localhost:8000/categories", {
+    const result = await fetch("https://concerned-crow-fedora.cyclic.app/categories", {
       next: { revalidate: 10 },
     });
     if (!result.ok) {

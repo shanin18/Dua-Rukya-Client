@@ -16,7 +16,7 @@ const CategoryCard = ({ category }) => {
   const handleAccordionClick = async (cat_id) => {
     try {
       const response = await fetch(
-        `http://localhost:8000/sub-categories?cat_id=${cat_id}`
+        `https://concerned-crow-fedora.cyclic.app/sub-categories?cat_id=${cat_id}`
       );
       const result = await response.json();
       setSubcategories(result);
@@ -29,7 +29,7 @@ const CategoryCard = ({ category }) => {
   const handleAccordionContents = async (cat_id, subcat_id) => {
     try {
       const response = await fetch(
-        `http://localhost:8000/duas?cat=${cat_id}&subcat_id=${subcat_id}`
+        `https://concerned-crow-fedora.cyclic.app/duas?cat=${cat_id}&subcat_id=${subcat_id}`
       );
       const result = await response.json();
       setDuas(result);

@@ -1,6 +1,6 @@
 const getDuas = async () => {
   try {
-    const result = await fetch("http://localhost:8000/duas", {
+    const result = await fetch("https://concerned-crow-fedora.cyclic.app/duas", {
       next: { revalidate: 10 },
     });
     if (!result.ok) {

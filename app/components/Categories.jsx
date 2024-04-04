@@ -74,13 +74,13 @@ const Categories = ({ categories }) => {
 
 export async function getStaticProps() {
   try {
-    const res = await fetch("http://localhost:8000/categories");
+    const res = await fetch("https://concerned-crow-fedora.cyclic.app/categories");
     const categories = await res.json();
 
     const categoriesWithSubcategories = await Promise.all(
       categories.map(async (category) => {
         const subRes = await fetch(
-          `http://localhost:8000/sub-categories?cat_id=${category.cat_id}`
+          `https://concerned-crow-fedora.cyclic.app/sub-categories?cat_id=${category.cat_id}`
         );
         const subcategories = await subRes.json();
         return { ...category, subcategories };
