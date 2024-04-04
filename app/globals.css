@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.my-btn{
+@apply py-3 px-8 rounded-lg text-sm border
+}
+.my-btn-primary{
+@apply bg-[#1FA45B] text-white border-[#1FA45B]
+}
+
+
+body {
+  background-color: #ebeef2;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* For WebKit based browsers (like Chrome, Safari) */
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #888;
+}
