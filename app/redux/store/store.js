@@ -1,4 +1,5 @@
 import categoriesButtonSlice from "../features/categoriesButton/categoriesButtonSlice";
+import navigateButtonSlice from "../features/navigateButton/navigateButtonSlice";
 import settingsButtonSlice from "../features/settingsButton/settingsButtonSlice";
 
 
@@ -8,6 +9,7 @@ const store = configureStore({
   reducer: {
     settingsButton: settingsButtonSlice,
     categoriesButton: categoriesButtonSlice,
+    navigateButton: navigateButtonSlice,
   },
 });
 

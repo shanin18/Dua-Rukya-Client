@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useState } from "react";
 import guruttoImage from "@/app/svgs/duar_gurutto.svg";
 import duaarrowSVG from "@/app/svgs/duaarrow.svg";
+import NavigateBtn from "./NavigateBtn";
 
 const CategoryCard = ({ category }) => {
   // Destructuring category object
@@ -39,7 +40,8 @@ const CategoryCard = ({ category }) => {
   };
 
   return (
-    <div
+    <NavigateBtn id={category.cat_id}>
+      <div
       className="collapse bg-base-200"
       onClick={() => handleAccordionClick(category?.cat_id)}
     >
@@ -103,6 +105,7 @@ const CategoryCard = ({ category }) => {
         ))}
       </div>
     </div>
+    </NavigateBtn>
   );
 };
 

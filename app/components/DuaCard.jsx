@@ -1,6 +1,7 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
-import CategoriesButton from "./CategoriesButton";
+import { useRef, useEffect } from "react";
 import AudioPlayer from "./AudioPlayer";
 import duaCardSVG from "@/app/svgs/duacard.svg";
 import copySVG from "@/app/svgs/copy.svg";
@@ -10,8 +11,20 @@ import shareSVG from "@/app/svgs/share.svg";
 import reportSVG from "@/app/svgs/report.svg";
 import getSubCategories from "../lib/getSubCategories";
 import getDuas from "../lib/getDuas";
+import { useSelector } from "react-redux";
+import CategoriesButton from "./CategoriesButton";
 
 const DuaCard = ({ subCategories, duas }) => {
+  const { id } = useSelector((state) => state.navigateButton);
+  const subCategoryRefs = useRef({});
+
+  useEffect(() => {
+    const subCategoryRef = subCategoryRefs.current[id];
+    if (subCategoryRef) {
+      subCategoryRef.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [id]);
+
   return (
     <div className="flex flex-col h-full md:pt-[102px] p-3 xl:pt-0">
       {/* Title and Categories Button */}
@@ -23,7 +36,13 @@ const DuaCard = ({ subCategories, duas }) => {
       {/* Dua Cards */}
       <div className="overflow-y-auto space-y-5">
         {subCategories?.map((subCategory, idx) => (
-          <div key={idx} className="space-y-5">
+          <div
+            key={idx}
+            className="space-y-5"
+            ref={(ref) =>
+              (subCategoryRefs.current[subCategory.subcat_id] = ref)
+            }
+          >
             {/* Subcategory Title */}
             <div className="bg-white p-5 rounded-xl">
               <h2 className="font-medium">
