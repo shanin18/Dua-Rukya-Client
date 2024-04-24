@@ -77,6 +77,9 @@ Welcome to our webpage dedicated to dua and ruqyah, curated by the IRD Foundatio
 ## 🚀 Live Demo <a name="live-demo"></a>
 - <a href="https://dua-ruqaiya.vercel.app/">Live Demo</a>
 
+## 🚀 About the project on video <a name="live-demo"></a>
+- <a href="https://www.youtube.com/watch?v=wIzSlshMt0I">Video</a>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
