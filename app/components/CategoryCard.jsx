@@ -1,11 +1,13 @@
 import Image from "next/image";
-import {  useState } from "react";
+import { useState } from "react";
 import guruttoImage from "@/app/svgs/duar_gurutto.svg";
 import duaarrowSVG from "@/app/svgs/duaarrow.svg";
 import {
   useGetDuasByCatIdAndSubCatIdQuery,
   useGetSubCategoriesByIdQuery,
 } from "../redux/api/baseApi";
+import { useDispatch } from "react-redux";
+import { setIsCategoriesOpen } from "../redux/features/categoriesButton/categoriesButtonSlice";
 
 const CategoryCard = ({ category }) => {
   // State for subcategories and duas
@@ -17,7 +19,7 @@ const CategoryCard = ({ category }) => {
 
   const { data: subCategories } = useGetSubCategoriesByIdQuery(categoryId);
 
-
+  const dispatch = useDispatch();
 
   const { data: duas } = useGetDuasByCatIdAndSubCatIdQuery({
     cat_id: catIdOfSubCat,
@@ -28,11 +30,10 @@ const CategoryCard = ({ category }) => {
   const { cat_name_en, no_of_subcat, no_of_dua } = category;
 
   const handleSubcategories = (cat_id, subcat_id) => {
-    setSelectedSubcategory(subcat_id)
+    setSelectedSubcategory(subcat_id);
     setcatIdOfSubCat(cat_id);
     setSubCategoryId(subcat_id);
   };
-
 
   return (
     <div
@@ -79,7 +80,10 @@ const CategoryCard = ({ category }) => {
                 {/* Subcategory icon */}
                 <Image src={duaarrowSVG} alt="icon" />
                 <p
-                  className={`text-[15px] font-medium ${selectedSubcategory === subCategory.subcat_id && "text-[#1FA45B]"} `}
+                  className={`text-[15px] font-medium ${
+                    selectedSubcategory === subCategory.subcat_id &&
+                    "text-[#1FA45B]"
+                  } `}
                 >
                   {subCategory?.subcat_name_en}
                 </p>
@@ -89,11 +93,24 @@ const CategoryCard = ({ category }) => {
             {/* Duas under subcategory */}
             <div className="collapse-content">
               {duas?.map((dua, idx) => (
-                <div key={idx} className="flex items-center gap-3 mb-5 ml-2 cursor-pointer" onClick={()=> setSelectedDua(dua.dua_id)}>
+                <div
+                  key={idx}
+                  className="flex items-center gap-3 mb-5 ml-2 cursor-pointer"
+                  onClick={() => {
+                    dispatch(setIsCategoriesOpen(true));
+                    setSelectedDua(dua.dua_id);
+                  }}
+                >
                   {/* Dua icon */}
                   <Image src={duaarrowSVG} alt="icon" width={10} />
                   {/* Dua name */}
-                  <p className={`text-sm ${selectedDua === dua.dua_id && "text-[#1FA45B]"}`} >{dua?.dua_name_en}</p>
+                  <p
+                    className={`text-sm ${
+                      selectedDua === dua.dua_id && "text-[#1FA45B]"
+                    }`}
+                  >
+                    {dua?.dua_name_en}
+                  </p>
                 </div>
               ))}
             </div>

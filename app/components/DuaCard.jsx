@@ -18,13 +18,13 @@ import Spinner from "./Spinner";
 const DuaCard = () => {
   const {
     data: subCategories,
-    isLoading,
+    isLoading:subCategoriesLoading,
     isError,
     error,
   } = useGetSubCategoriesQuery();
-  const { data: duas } = useGetDuasQuery();
+  const { data: duas, isLoading:duasLoading } = useGetDuasQuery();
 
-  if (isLoading) {
+  if (subCategoriesLoading || duasLoading) {
     return (
       <div className="w-full min-h-full flex items-center justify-center">
         <Spinner />
