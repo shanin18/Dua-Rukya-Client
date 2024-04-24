@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from "react";
 import playBtnSVG from "@/app/svgs/audiobtn.svg";
 import pauseBtnSVG from "@/app/svgs/pause.svg";
 
-function AudioPlayer({ src }) {
+const AudioPlayer = ({ src }) => {
   // Ref to the audio element
   const audioRef = useRef(null);
   // State for current playback time
@@ -18,25 +18,32 @@ function AudioPlayer({ src }) {
   // Effect hook to set up event listeners and clean up
   useEffect(() => {
     const audio = audioRef.current;
-
+  
     // Update current time while playing
     const updateTime = () => {
       setCurrentTime(audio.currentTime);
     };
-
+  
     // Update duration on metadata load
     const updateDuration = () => {
       setDuration(audio.duration);
     };
-
+  
+    // Reset play state when audio ends
+    const handleEnd = () => {
+      setIsPlaying(false);
+    };
+  
     // Add event listeners
     audio.addEventListener("timeupdate", updateTime);
     audio.addEventListener("loadedmetadata", updateDuration);
-
+    audio.addEventListener("ended", handleEnd); // Add this line
+  
     // Clean up event listeners
     return () => {
       audio.removeEventListener("timeupdate", updateTime);
       audio.removeEventListener("loadedmetadata", updateDuration);
+      audio.removeEventListener("ended", handleEnd); // Add this line
     };
   }, []);
 
@@ -75,7 +82,7 @@ function AudioPlayer({ src }) {
           )}
         </button>
         {/* Seek bar */}
-        <div className="flex-1 mx-4 relative bg-gray-200 h-[5px] w-[150px] rounded text-sm" onClick={seek}>
+        <div className="flex-1 mx-4 relative bg-gray-200 h-[5px] w-[150px] rounded text-sm cursor-pointer" onClick={seek}>
           {/* Progress bar */}
           <div
             className="absolute top-0 left-0 bg-[#1FA45B] h-full rounded"

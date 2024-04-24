@@ -1,7 +1,6 @@
-"use client"
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useEffect } from "react";
 import AudioPlayer from "./AudioPlayer";
 import duaCardSVG from "@/app/svgs/duacard.svg";
 import copySVG from "@/app/svgs/copy.svg";
@@ -9,21 +8,31 @@ import bookmarkSVG from "@/app/svgs/bookmark.svg";
 import memorizeSVG from "@/app/svgs/memorize.svg";
 import shareSVG from "@/app/svgs/share.svg";
 import reportSVG from "@/app/svgs/report.svg";
-import getSubCategories from "../lib/getSubCategories";
-import getDuas from "../lib/getDuas";
-import { useSelector } from "react-redux";
 import CategoriesButton from "./CategoriesButton";
+import {
+  useGetDuasQuery,
+  useGetSubCategoriesQuery,
+} from "../redux/api/baseApi";
+import Spinner from "./Spinner";
 
-const DuaCard = ({ subCategories, duas }) => {
-  const { id } = useSelector((state) => state.navigateButton);
-  const subCategoryRefs = useRef({});
+const DuaCard = () => {
+  const {
+    data: subCategories,
+    isLoading,
+    isError,
+    error,
+  } = useGetSubCategoriesQuery();
+  const { data: duas } = useGetDuasQuery();
 
-  useEffect(() => {
-    const subCategoryRef = subCategoryRefs.current[id];
-    if (subCategoryRef) {
-      subCategoryRef.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }, [id]);
+  if (isLoading) {
+    return (
+      <div className="w-full min-h-full flex items-center justify-center">
+        <Spinner />
+      </div>
+    );
+  } else if (isError) {
+    console.log(error);
+  }
 
   return (
     <div className="flex flex-col h-full md:pt-[102px] p-3 xl:pt-0">
@@ -36,13 +45,7 @@ const DuaCard = ({ subCategories, duas }) => {
       {/* Dua Cards */}
       <div className="overflow-y-auto space-y-5">
         {subCategories?.map((subCategory, idx) => (
-          <div
-            key={idx}
-            className="space-y-5"
-            ref={(ref) =>
-              (subCategoryRefs.current[subCategory.subcat_id] = ref)
-            }
-          >
+          <div key={idx} className="space-y-5">
             {/* Subcategory Title */}
             <div className="bg-white p-5 rounded-xl">
               <h2 className="font-medium">
@@ -53,8 +56,8 @@ const DuaCard = ({ subCategories, duas }) => {
 
             {/* Individual Duas */}
             {duas
-              .filter((dua) => dua.subcat_id === subCategory.subcat_id)
-              .map((dua, idx) => (
+              ?.filter((dua) => dua.subcat_id === subCategory.subcat_id)
+              ?.map((dua, idx) => (
                 <div key={idx} className="bg-white p-6 rounded-xl">
                   {/* Dua Title */}
                   <div className="flex items-center gap-3 pb-4">

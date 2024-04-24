@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .my-btn{
-@apply py-3 px-8 rounded-lg text-sm border
+@apply py-[10px] px-8 rounded-lg text-sm border
 }
 .my-btn-primary{
 @apply bg-[#1FA45B] text-white border-[#1FA45B]

@@ -16,7 +16,7 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <div className="flex h-screen xl:p-8 relative overflow-hidden">
+          <div className="flex h-screen xl:py-9 xl:px-10 relative overflow-hidden">
             {/* Sidebar on the left */}
             <div>
               <Sidebar />

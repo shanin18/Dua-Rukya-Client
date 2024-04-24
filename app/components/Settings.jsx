@@ -35,7 +35,7 @@ const Settings = () => {
 
   return (
     <div
-      className={`bg-white rounded-xl overflow-hidden p-4 ml-2 z-40 duration-500 absolute xl:static ${
+      className={`bg-white rounded-3xl overflow-hidden p-4 ml-2 z-40 duration-500 absolute xl:static ${
         isOpen ?  "-right-[300px] top-0" : "right-0 top-0"
       } flex flex-col h-full shadow-lg`}
       style={{ maxWidth: "300px" }}
@@ -54,14 +54,14 @@ const Settings = () => {
             <div className="md:bg-[#e8f0f5] rounded-full w-8 h-8 p-1 md:p-0 md:w-[38px] md:h-[38px] flex items-center justify-center hover:scale-110 duration-200">
               <Image src={languageSVG} quality={100} alt="language_icon" />
             </div>
-            <p className="font-medium text-[#1FA45B] cursor-pointer">
+            <p className="font-semibold text-[#1FA45B] cursor-pointer text-sm">
               Language Settings
             </p>
           </div>
         </Link>
 
         {/* Language options */}
-        <div className="flex flex-wrap md:flex-nowrap items-center justify-between gap-3 p-6">
+        <div className="flex flex-wrap md:flex-nowrap items-center justify-between gap-3 px-4 py-6">
           <button className="w-full my-btn my-btn-primary cursor-pointer">
             English
           </button>
@@ -78,7 +78,7 @@ const Settings = () => {
               <div className="md:bg-[#e8f0f5] rounded-full w-8 h-8 p-1 md:p-0 md:w-[38px] md:h-[38px] flex items-center justify-center hover:scale-110 duration-200">
                 <Image src={generalSVG} quality={100} alt="general_icon" />
               </div>
-              <p className="font-medium text-gray-500 cursor-pointer">
+              <p className="font-medium text-gray-400 cursor-pointer text-sm">
                 General Settings
               </p>
             </div>
@@ -92,7 +92,7 @@ const Settings = () => {
               <div className="md:bg-[#e8f0f5] rounded-full w-8 h-8 p-1 md:p-0 md:w-[38px] md:h-[38px] flex items-center justify-center hover:scale-110 duration-200">
                 <Image src={menuSVG} quality={100} alt="menu_icon" />
               </div>
-              <p className="font-medium text-gray-500 cursor-pointer">
+              <p className="font-medium text-gray-400 cursor-pointer text-sm">
                 Font Settings
               </p>
             </div>
@@ -106,7 +106,7 @@ const Settings = () => {
               <div className="md:bg-[#e8f0f5] rounded-full w-8 h-8 p-1 md:p-0 md:w-[38px] md:h-[38px] flex items-center justify-center hover:scale-110 duration-200">
                 <Image src={generalSVG} quality={100} alt="appearance_icon" />
               </div>
-              <p className="font-medium text-gray-500 cursor-pointer">
+              <p className="font-medium text-gray-400 cursor-pointer text-sm">
                 Appearance Settings
               </p>
             </div>

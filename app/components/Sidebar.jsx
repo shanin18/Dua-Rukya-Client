@@ -26,7 +26,7 @@ const Sidebar = () => {
   return (
     <>
       {/* Large screen sidebar */}
-      <div className="hidden xl:flex flex-col justify-between items-center py-5 px-1 bg-white rounded-3xl mr-8 h-full">
+      <div className="hidden xl:flex flex-col justify-between items-center py-5 px-1 bg-white rounded-3xl mr-8 h-full overflow-y-auto">
         <div>
           {/* Logo */}
           <Link href="/">

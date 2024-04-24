@@ -23,7 +23,7 @@ const Navbar = () => {
               className="input pr-16 w-24 md:w-auto focus:border-[#1FA45B] placeholder:text-sm placeholder:text-gray-500"
               style={{ outline: "none" }}
             />
-            <div className="absolute top-1 right-1 bg-[#ebeef2] w-14 h-10 flex items-center justify-center rounded-lg">
+            <div className="absolute top-1 right-1 bg-[#ebeef2] w-14 h-10 flex items-center justify-center rounded-md">
               <Image src={glass} alt="magnifying_glass" />
             </div>
           </div>

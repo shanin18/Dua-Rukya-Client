@@ -1,51 +1,45 @@
 import Image from "next/image";
-import { useState } from "react";
+import {  useState } from "react";
 import guruttoImage from "@/app/svgs/duar_gurutto.svg";
 import duaarrowSVG from "@/app/svgs/duaarrow.svg";
-import NavigateBtn from "./NavigateBtn";
+import {
+  useGetDuasByCatIdAndSubCatIdQuery,
+  useGetSubCategoriesByIdQuery,
+} from "../redux/api/baseApi";
 
 const CategoryCard = ({ category }) => {
+  // State for subcategories and duas
+  const [selectedSubcategory, setSelectedSubcategory] = useState(null);
+  const [selectedDua, setSelectedDua] = useState(null);
+  const [categoryId, setCategoryId] = useState(null);
+  const [subCategoryId, setSubCategoryId] = useState(null);
+  const [catIdOfSubCat, setcatIdOfSubCat] = useState(null);
+
+  const { data: subCategories } = useGetSubCategoriesByIdQuery(categoryId);
+
+
+
+  const { data: duas } = useGetDuasByCatIdAndSubCatIdQuery({
+    cat_id: catIdOfSubCat,
+    subcat_id: subCategoryId,
+  });
+
   // Destructuring category object
   const { cat_name_en, no_of_subcat, no_of_dua } = category;
 
-  // State for subcategories and duas
-  const [subcategories, setSubcategories] = useState([]);
-  const [duas, setDuas] = useState([]);
-
-  // Function to handle accordion click event
-  const handleAccordionClick = async (cat_id) => {
-    try {
-      const response = await fetch(
-        `https://concerned-crow-fedora.cyclic.app/sub-categories?cat_id=${cat_id}`
-      );
-      const result = await response.json();
-      setSubcategories(result);
-    } catch (error) {
-      console.error("Error fetching subcategories:", error);
-    }
+  const handleSubcategories = (cat_id, subcat_id) => {
+    setSelectedSubcategory(subcat_id)
+    setcatIdOfSubCat(cat_id);
+    setSubCategoryId(subcat_id);
   };
 
-  // Function to handle accordion contents
-  const handleAccordionContents = async (cat_id, subcat_id) => {
-    try {
-      const response = await fetch(
-        `https://concerned-crow-fedora.cyclic.app/duas?cat=${cat_id}&subcat_id=${subcat_id}`
-      );
-      const result = await response.json();
-      setDuas(result);
-      dispatch(addIds({ subcat_id }));
-    } catch (error) {
-      console.error("Error fetching duas:", error);
-    }
-  };
 
   return (
-    <NavigateBtn id={category.cat_id}>
-      <div
+    <div
       className="collapse bg-base-200"
-      onClick={() => handleAccordionClick(category?.cat_id)}
+      onClick={() => setCategoryId(category?.cat_id)}
     >
-      <input type="radio" name="my-accordion-1" defaultChecked />
+      <input type="radio" name="my-accordion-1" />
       {/* Category card title */}
       <div className="collapse-title bg-[#e8f0f5] flex items-center justify-between px-3">
         <div className="flex items-center space-x-3">
@@ -70,12 +64,12 @@ const CategoryCard = ({ category }) => {
 
       {/* Subcategories */}
       <div className="collapse-content bg-white p-0">
-        {subcategories.map((subCategory, idx) => (
+        {subCategories?.map((subCategory, idx) => (
           <div
             key={idx}
             className="collapse"
             onClick={() =>
-              handleAccordionContents(subCategory.cat_id, subCategory.subcat_id)
+              handleSubcategories(subCategory.cat_id, subCategory.subcat_id)
             }
           >
             <input type="radio" name="my-accordion-2" />
@@ -84,7 +78,9 @@ const CategoryCard = ({ category }) => {
               <div className="flex items-center space-x-2">
                 {/* Subcategory icon */}
                 <Image src={duaarrowSVG} alt="icon" />
-                <p className="text-sm font-medium">
+                <p
+                  className={`text-[15px] font-medium ${selectedSubcategory === subCategory.subcat_id && "text-[#1FA45B]"} `}
+                >
                   {subCategory?.subcat_name_en}
                 </p>
               </div>
@@ -93,11 +89,11 @@ const CategoryCard = ({ category }) => {
             {/* Duas under subcategory */}
             <div className="collapse-content">
               {duas?.map((dua, idx) => (
-                <div key={idx} className="flex items-center gap-3 mb-5 ml-2">
+                <div key={idx} className="flex items-center gap-3 mb-5 ml-2 cursor-pointer" onClick={()=> setSelectedDua(dua.dua_id)}>
                   {/* Dua icon */}
                   <Image src={duaarrowSVG} alt="icon" width={10} />
                   {/* Dua name */}
-                  <p className="text-sm">{dua?.dua_name_en}</p>
+                  <p className={`text-sm ${selectedDua === dua.dua_id && "text-[#1FA45B]"}`} >{dua?.dua_name_en}</p>
                 </div>
               ))}
             </div>
@@ -105,7 +101,6 @@ const CategoryCard = ({ category }) => {
         ))}
       </div>
     </div>
-    </NavigateBtn>
   );
 };
 
