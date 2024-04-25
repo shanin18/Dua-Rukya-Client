@@ -2,7 +2,7 @@
 
 <!-- TABLE OF CONTENTS -->
 
-# 📗 Table of Contents <a name="about-project">Dua & Ruqyah</a>
+# 📗 Table of Contents
 
 - [🤲 Dua & Ruqyah ](#-Dua-Ruqyah-)
   - [🛠 Built With ](#-built-with-)
