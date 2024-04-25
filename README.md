@@ -107,7 +107,7 @@ Install this project with:
 
 ```sh
   cd Dua-Ruqyah
-  npm install
+  yarn install
 ```
 
 
@@ -116,7 +116,7 @@ Install this project with:
 To run tests, run the following command:
 
 ```sh
-  npm run dev
+  yarn dev
 ```
 
 
